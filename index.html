@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="app">
+
+    <!--  START SCREEN -->
+    <section id="screen-start" class="screen active">
+        <header class="start-header">
+            <h1>Kenya Quiz Challenge</h1>
+            <p>Test your knowledge of Kenya and technology. 15 questions. 15 seconds each.</p>
+        </header>
+
+        <!-- Bonus: category and difficulty filters -->
+        <div class="filters">
+            <div class="filter-group">
+                <label for="filter-category">Category</label>
+                <select id="filter-category">
+                    <option value="all">All Categories</option>
+                    <option value="Geography">Geography</option>
+                    <option value="Technology">Technology</option>
+                    <option value="Culture">Culture</option>
+                </select>
+            </div>
+
+            <div class="filter-group">
+                <label for="filter-difficulty">Difficulty</label>
+                <select id="filter-difficulty">
+                    <option value="all">All Levels</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
+        </div>
+
+        <button id="btn-start" class="btn btn-primary" type="button">Start Quiz</button>
+
+        <!-- Populated by JS from localStorage -->
+        <p id="last-score" class="last-score"></p>
+
+        <!-- Bonus: leaderboard -->
+        <div id="leaderboard-container" class="leaderboard hidden">
+            <h2>Top Scores</h2>
+            <ol id="leaderboard-list"></ol>
+            <button id="btn-clear-scores" class="btn btn-ghost btn-small" type="button">Clear Scores</button>
+        </div>
+    </section>
+
+    <!-- QUIZ SCREEN -->
+    <section id="screen-quiz" class="screen">
+
+        <div class="quiz-header">
+            <span id="progress-text" class="progress-text">Question 1 of 15</span>
+            <span id="score-display" class="score-display">Score: 0</span>
+        </div>
+
+        <div class="progress-bar">
+            <div id="progress-fill" class="progress-fill"></div>
+        </div>
+
+        <div class="timer-row">
+            <div id="timer-display" class="timer-display">15s</div>
+            <div class="timer-bar">
+                <div id="timer-fill" class="timer-fill"></div>
+            </div>
+        </div>
+
+        <h2 id="question-text" class="question-text">Question goes here</h2>
+
+        <div id="answers" class="answers"></div>
+    </section>
+
+    <!--  RESULTS SCREEN -->
+    <section id="screen-results" class="screen">
+        <h1>Quiz Complete!</h1>
+
+        <div class="results-summary">
+            <p id="result-score" class="result-score"></p>
+            <p id="result-percent" class="result-percent"></p>
+            <div id="result-grade" class="result-grade"></div>
+            <p id="result-message" class="result-message"></p>
+        </div>
+
+        <div class="results-actions">
+            <button id="btn-review"   class="btn btn-secondary" type="button">Review Answers</button>
+            <button id="btn-share"    class="btn btn-ghost"     type="button">Share Score</button>
+            <button id="btn-restart"  class="btn btn-primary"   type="button">Restart Quiz</button>
+        </div>
+
+        <p id="share-feedback" class="share-feedback"></p>
+    </section>
+
+    <!-- REVIEW SCREEN -->
+    <section id="screen-review" class="screen">
+        <h1>Review Your Answers</h1>
+        <div id="review-container" class="review-container"></div>
+        <button id="btn-back" class="btn btn-primary" type="button">Back to Results</button>
+    </section>
+
+</div>
+
+<!-- Order matters: questions.js must load before script.js -->
+<script src="questions.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>
